@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.9.RELEASE'
+        springBootVersion = '2.5.0'
     }
     repositories {
         mavenCentral()
@@ -26,9 +26,21 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok:'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude module: 'junit'
+    }
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.1') {
+        exclude module: 'junit-platform-commons'
+    }
+    testImplementation 'junit:junit:4.13.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testRuntimeOnly('org.junit.platform:junit-platform-engine:1.9.2')
+    testRuntimeOnly('org.junit.platform:junit-platform-commons:1.9.2')
 }
 
 test {
