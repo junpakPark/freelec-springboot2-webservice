@@ -56,7 +56,7 @@ class PostsRepositoryTest {
                 .build());
 
         //when
-        List<Posts> postsList = postsRepository.findAll();
+        List<Posts> postsList = postsRepository.findAllDesc();
 
         //then
         final Posts posts = postsList.get(0);

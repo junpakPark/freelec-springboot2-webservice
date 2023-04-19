@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor
 public class Posts {
@@ -12,27 +14,15 @@ public class Posts {
     private String title;
     private String content;
     private String author;
+    private LocalDateTime modifiedDate;
 
     @Builder
-    public Posts(final String title, final String content, final String author) {
+    public Posts(final Long id, final String title, final String content, final String author, final LocalDateTime modifiedDate) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
+        this.modifiedDate = modifiedDate;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
 }
